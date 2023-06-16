@@ -2,12 +2,35 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { user } from './user.schema';
+import axios from 'axios';
 
 @Injectable()
 export class UsersService {
-  constructor(@InjectModel(user.name) private userModel: Model<user>) {}
+  //constructor(@InjectModel(user.name) private userModel: Model<user>) {}
 
-  async create(user: user): Promise<user> {
+
+  async getdeviceById(id: string): Promise<any> {
+    try {
+      console.log(id)
+
+      const url = `https://dashboard.hologram.io/api/1/devices/${id}`;
+            console.log(url,"ii")
+            const response = await axios.get(url);
+            console.log(response.data,"rrr")
+            //const data = response.data;
+            //console.log(data,"iii")
+     
+      return ;
+    } catch (error) {
+      throw new Error
+    }
+  }
+
+
+
+
+
+ /* async create(user: user): Promise<user> {
 //console.log(user,"wfjsfjewkf")
 
 const gg=await this.userModel.find()
@@ -50,7 +73,7 @@ async delete(id:string):Promise<user>
  const ddd=await this.userModel.findByIdAndDelete(id)
 
     return ddd
-}
+}*/
 
 
 }
