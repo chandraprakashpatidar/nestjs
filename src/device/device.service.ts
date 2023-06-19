@@ -1,71 +1,62 @@
 import { Injectable } from "@nestjs/common";
-//import axios from "axios";
+import { NetworkService } from "./networkservice";
+
 @Injectable()
-export class DecviceService
-{
+export class DeviceService {
+    constructor(private readonly networkservice: NetworkService) {}
 
-  //  async getdeviceById(id: string): Promise<any> {
-       /* try {
-    console.log(id,"iii")
-            const url = `https://dashboard.hologram.io/api/1/devices/${id}`;
-            console.log(url,"qqq")
-            const response = await axios.get(url);
-            console.log(response.data,"rrr")
-            const data = response.data;
-            console.log(data,"iii")
-            //return data;
-         
-           
+    async getdeviceById(id: string): Promise<any> {
+        try {
+            const bodyData = { key: 'value' };
+            const url = `https://dashboard.hologram.io/api/1/devices/?orgid=51736&apikey=5vQxeW6vRcjNotTukTc3MoMOB2ZLmb`;
+            const data = await this.networkservice.call(url, 'get', bodyData);
+            console.log(data, "data");
+            return data;
         } catch (error) {
-          throw new Error
+            throw new Error(error);
         }
-      }*/
-    
-async getAlldeviceByorgId(orgid:string):Promise<any>
-    {
-try {
-    console.log(orgid,"orgid")
-    return  
-} catch (error) {
-
-throw new error       
-}
     }
-    
-    async getAlldevicelocationBydeviceId(deviceid:string):Promise<any>
 
-    {
+    async getAlldeviceByorgId(id: string): Promise<any> {
+        try {
+            const bodyData = { key: 'value' };
+            const url = `https://dashboard.hologram.io/api/1/devices/${id}?apikey=5vQxeW6vRcjNotTukTc3MoMOB2ZLmb`;
+            const data = await this.networkservice.call(url, 'get', bodyData);
+            console.log(data, "data");
+            return data;
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
+
+    async getAlldevicelocationBydeviceId(deviceid: string): Promise<any> {
+        try {
+            const bodyData = { key: 'value' };
+            const url = `https://dashboard.hologram.io/api/1/devices/locations?orgid=51736&apikey=5vQxeW6vRcjNotTukTc3MoMOB2ZLmb`;
+            const data = await this.networkservice.call(url, 'get', bodyData);
+            console.log(data, "data");
+            return data;
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
+
+    async Devicepauseandunpause(id: string, datadetails: any): Promise<any> {
+      
+
 try {
-    console.log(deviceid,"orgid")
-    return  
-} catch (error) {
-
-throw new error    
-    
-}
-
-    }    
- async Devicepauseandunpause(id, datadetails):Promise<any>
- {
-
-try {
-    
 console.log(id)
-console.log(datadetails)
+console.log(datadetails,"detailsss")
 
-} catch (error)
+    
+} 
 
-
+catch (error) 
 
 {
     
 }
 
 
-
- } 
-    
-
-
-
+    }
 }

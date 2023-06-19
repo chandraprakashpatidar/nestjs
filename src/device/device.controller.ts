@@ -1,21 +1,21 @@
 import { Body, Controller, Get, HttpStatus, Param, Post, Res } from '@nestjs/common';
 import { ApiTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 //import { UsersService } from './users.service';
-import { DecviceService } from './device.service';
+import { DeviceService } from './device.service';
 import { DeviceStateDTO } from 'src/DTO/datapause';
 @Controller('device')
 @ApiTags('device')
 export class DeviceController {
-  constructor(private readonly DeviceService: DecviceService) {}
+  constructor(private readonly DeviceService: DeviceService) {}
 
- /* @Get(':id')
-  @ApiOperation({ summary: 'Get device by ID' })
+  @Get(':id')
+  @ApiOperation({ summary: 'Get orgid by ID' })
   @ApiResponse({ status: 200, description: 'device found successfully' })
   @ApiResponse({ status: 400, description: 'Bad request' })
-  async getdeviceById(@Res() response, @Param('id') id: string): Promise<any> {
+  async getdeviceById(@Res() response, @Param('id') orgid: string): Promise<any> {
     try {
-      console.log(id, 'orgid12');
-      const datadevice = await this.DeviceService.getdeviceById(id);
+      console.log(orgid, 'orgid12');
+      const datadevice = await this.DeviceService.getdeviceById(orgid);
       return response.status(HttpStatus.OK).json({
         message: 'device found successfully',
         data: datadevice,
@@ -27,17 +27,17 @@ export class DeviceController {
         err: 'Bad request',
       });
     }
-  }*/
+  }
 
 
-  @Get(':id/orgid')
+  @Get(':id/id')
   @ApiOperation({ summary: 'Get all  device by  orgid' })
   @ApiResponse({ status: 200, description: 'device found successfully' })
   @ApiResponse({ status: 400, description: 'Bad request' })
-  async getAlldeviceByorgId(@Res() response, @Param('id') orgid: string): Promise<any> {
+  async getAlldeviceByorgId(@Res() response, @Param('id') id: string): Promise<any> {
     try {
-      console.log(orgid, 'orgid');
-      const device = await this.DeviceService.getAlldeviceByorgId(orgid);
+      console.log(id, 'orgid');
+      const device = await this.DeviceService.getAlldeviceByorgId(id);
       return response.status(HttpStatus.OK).json({
         message: 'device found successfully',
         data: device,
@@ -74,6 +74,9 @@ export class DeviceController {
       });
     }
   }
+
+
+
   @Post(':id/state')
 @ApiOperation({ summary: 'Pause or Unpause Device Data by device id' })
 @ApiResponse({ status: 200, description: 'Device state updated successfully' })
@@ -99,8 +102,9 @@ async Devicepauseandunpause(
     });
   }
 }
-
-
-
-
 }
+
+
+
+
+
