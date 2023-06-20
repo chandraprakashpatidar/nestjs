@@ -8,7 +8,7 @@ import { DeviceController } from './device/device.controller';
 import { DeviceService } from './device/device.service';
 import { MockServerController } from './mock-server';
 import { NetworkService } from './device/networkservice';
-import { AxiosProvider } from './device/axios.provider'; // यहां संशोधित करें
+import { AxiosProvider } from './device/axios.provider'; 
 import { HttpModule } from '@nestjs/axios';
 
 @Module({
@@ -23,7 +23,7 @@ import { HttpModule } from '@nestjs/axios';
     Authmodule,
     DeviceService,
     NetworkService,
-    AxiosProvider, // यहां संशोधित करें
+    AxiosProvider, 
   ],
   exports: [NetworkService],
 })

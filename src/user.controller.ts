@@ -18,7 +18,7 @@ export class Usercontroller{
 
     @Get('/all')
     async getAllUsers() {
-      const response = await axios.get('http://localhost:3000/users');
+      const response = await axios.get('http://localhost:3001/users');
       return response.data;
     }
 
