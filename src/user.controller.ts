@@ -1,5 +1,6 @@
-import { Controller,Post,Body,Get ,Res,HttpStatus, HttpCode ,Patch,Param,Delete, UseGuards,Req,Query} from '@nestjs/common';
+import { Controller,Post,Body,Get ,Res,HttpStatus, HttpCode ,Patch,Param,Delete, UseGuards,Req,Query,} from '@nestjs/common';
 import { UsersService } from './user.service';
+import { HttpService } from '@nestjs/axios';
 import { user } from './user.schema';
 //import { userdto } from './user.dto';
 //import { userint } from './user.interface';
@@ -8,19 +9,79 @@ import { AuthGuard } from '@nestjs/passport';
 import { Authmodule } from './auth/auth.module';
 //import { ApiTags } from '@nestjs/swagger';
 import { ApiTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
+
 import axios from 'axios';
-@Controller("user")
+import {myserver} from '../node_modules/mynewmoulde/myfile'
+
+//import { DeviceController } from 'mysecondproject/src/device/device.controller'
+//import {addNumbers} from '/home/smartaxiom/Desktop/nestjs/node_modules/mynewmoulde/myfile.js'
+
+//import { DeviceController } from './device/device.controller';@Controller("user")
+
+@Controller('my')
 @ApiTags('user')
 export class Usercontroller{
-    constructor(private readonly usersService: UsersService) {}
+    constructor(private readonly usersService: UsersService,
+           // private readonly deviceController: DeviceController,
+    private readonly httpService:HttpService
+     ) {}
+
+@Get(':id')
+     async getDeviceById(@Res() response, @Param('id') id: string): Promise<any> {
+      try {
+        console.log(id)
+
+        const myserverResponse = await myserver(); // myserver की एपीआई को कॉल करें
+        console.log(myserverResponse.data,"nestjs");
+
+        // const serverurl='http://localhost:3005'
+        // const apiEndpoint='/api'
+        // const apiUrl = `${serverurl}${apiEndpoint}`
+        // console.log(apiUrl,"apii")
+        // const result = await this.httpService.get(apiUrl).toPromise();
+        //       console.log(result.data)
 
 
 
-    @Get('/all')
+        //const device = await this.deviceController.getdeviceById(id);
+        //const result=addNumbers(5,5)
+        //console.log(result)
+      }
+      catch(error)
+      
+      {
+
+      }
+    }
+
+
+       // const message = this.deviceController.message; */
+        //return response.status(HttpStatus.OK).json({
+        //  message: `Device found successfully. ${message}`, 
+    //       data: device,
+    //     });
+    //   } catch (err) {
+    //     return response.status(HttpStatus.BAD_REQUEST).json({
+    //       statuscode: 400,
+    //       message: 'Error',
+    //       err: 'Bad request',
+    //     });
+    //   }
+    // }
+    
+
+
+
+
+
+
+     
+
+/*    @Get('/all')
     async getAllUsers() {
       const response = await axios.get('http://localhost:3001/users');
       return response.data;
-    }
+    }*/
 
 
    /* @Get(':id')
@@ -43,7 +104,7 @@ export class Usercontroller{
         });
       }
     }*/
-  }
+  
   
 
  // @Post('/save')
@@ -191,3 +252,4 @@ async login(@Req()req)
 {
 return req.user
 }*/
+}

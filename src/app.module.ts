@@ -4,7 +4,7 @@ import { Authmodule } from './auth/auth.module';
 import { Usercontroller } from './user.controller';
 import { user, userschema } from './user.schema';
 import { UsersService } from './user.service';
-import { DeviceController } from './device/device.controller';
+//import { DeviceController } from 'mysecondproject/src/device/device.controller'
 import { DeviceService } from './device/device.service';
 import { MockServerController } from './mock-server';
 import { NetworkService } from './device/networkservice';
@@ -17,7 +17,7 @@ import { HttpModule } from '@nestjs/axios';
     MongooseModule.forRoot('mongodb://localhost:27017/mynestjs'),
     MongooseModule.forFeature([{ name: user.name, schema: userschema }]),
   ],
-  controllers: [Usercontroller, DeviceController, MockServerController],
+  controllers: [Usercontroller,  MockServerController,],
   providers: [
     UsersService,
     Authmodule,

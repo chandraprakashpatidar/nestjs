@@ -16,12 +16,12 @@ export class DeviceController {
   @ApiOperation({ summary: 'Get orgid by ID' })
   @ApiResponse({ status: 200, description: 'device found successfully' })
   @ApiResponse({ status: 400, description: 'Bad request' })
-  async getdeviceById(@Res() response, @Param('id') orgid: string): Promise<any> {
+  async getdeviceById(id: string): Promise<any> {
     try {
 
 
-      const result=addNumbers(5,5)
-console.log(result)
+      //const result=addNumbers(5,5)
+console.log("hello")
      /* console.log(orgid, 'orgid12');
       const datadevice = await this.DeviceService.getdeviceById(orgid);
       return response.status(HttpStatus.OK).json({
@@ -29,11 +29,11 @@ console.log(result)
         data: datadevice,
       });*/
     } catch (err) {
-      return response.status(HttpStatus.BAD_REQUEST).json({
+     /* return response.status(HttpStatus.BAD_REQUEST).json({
         statuscode: 400,
         message: 'Error',
         err: 'Bad request',
-      });
+      });*/
     }
   }
 
